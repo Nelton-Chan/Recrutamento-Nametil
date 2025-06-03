@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agência de Recrutamento Moçambique</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f6fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: url('file_00000000d27861f4bc9ecc60f58b6909.png') center center/cover no-repeat;
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 5px solid #0099cc;
+      position: relative;
+      height: 100vh;
+      min-height: 200px;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 64, 128, 0.6);
+      z-index: 1;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .form-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+    .form-box input,
+    .form-box select,
+    .form-box textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .form-box input[type="file"] {
+      padding: 4px;
+    }
+    .form-box button {
+      width: 48%;
+      padding: 12px;
+      margin: 5px 1%;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .form-box .submit-btn {
+      background-color: #007BFF;
+      color: #fff;
+    }
+    .form-box .reset-btn {
+      background-color: #ccc;
+      color: #333;
+    }
+  </style>
+
+  <script>
+    emailjs.init("tmZKOC3bpBJx9mBoO");
+
+    function enviarFormulario(event) {
+      event.preventDefault();
+      const nome = document.querySelector('[name="nome_completo"]').value;
+
+      emailjs.sendForm('service_373tlia', 'template_qjkp0n1', '#formRecrutamento')
+        .then(() => {
+          localStorage.setItem("nomeUsuario", nome);
+                    window.location.href = "tipo de conta.html";
+        })
+        .catch(error => {
+          console.error('Erro ao enviar:', error);
+          alert('Falha ao enviar. Verifique a conexão ou o template ID.');
+        });
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>Mogovolas rumo ao Futuro</h1>
+  <p>Conectando talentos do distrito a oportunidades reais!</p>
+</header>
+
+<div class="form-container">
+  <div class="form-box">
+    <form id="formRecrutamento" onsubmit="enviarFormulario(event)">
+      <h2>Inscrição</h2>
+      <input type="text" name="nome_completo" placeholder="Nome completo" required />
+      <input type="text" name="email" placeholder="Email" required />
+      <input type="tel" name="telefone" placeholder="Telefone" />
+      <textarea name="habilidades" rows="3" placeholder="Liste suas habilidades..." required></textarea>
+      <input type="password" name="login_password" placeholder="Senha" required />
+      <input type="password" name="confirm_password" placeholder="Confirme a Senha" required />
+      <input type="file" name="curriculo" accept="image/*,.pdf" />
+      <button type="submit" class="submit-btn">Enviar</button>
+      <button type="reset" class="reset-btn">Limpar</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

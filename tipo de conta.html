@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Escolha o Tipo de Usuário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('glass-refraction-5120x2880-22069.jpg') center center/cover no-repeat; 
+      text-align: center;
+      padding: 50px;
+      color: white;
+      height: auto;
+    }
+
+    h2 {
+      margin-bottom: 40px;
+      font-size: 24px;
+    }
+
+    .form-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .opcao {
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      padding: 30px;
+      width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .opcao:hover {
+      transform: scale(1.05);
+      background: #333;
+    }
+
+    .opcao button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background: #007b7b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .opcao button:hover {
+      background: #005f5f;
+    }
+     footer {
+      text-align: center;
+      padding: 15px;
+      background: #e2e8f0;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Você está acessando como?</h2>
+
+  <div class="form-container">
+    <div class="opcao">
+      <a href="Pacote do Usuário/painel do usuário.html">
+        <button>Sou um Candidato</button>
+      </a>
+    </div>
+
+    <div class="opcao">
+      <a href="Pacote da Empresa/painel da empresa.html">
+        <button>Sou uma Empresa</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const nome = localStorage.getItem("nomeUsuario");
+      if (nome) {
+        const saudacao = document.createElement("h3");
+        saudacao.textContent = "Bem-vindo, " + nome + "!";
+        saudacao.style.color = "#fff";
+        saudacao.style.marginTop = "20px";
+        document.body.insertBefore(saudacao, document.body.children[1]);
+      }
+    });
+  </script>
+</body>
+<footer>
+    Nelton da Méria Nazaré Ambate&copy; Todos direitos reservados 
+</footer>
+</html>
